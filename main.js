@@ -33,10 +33,9 @@ function currentDayAndTime(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 function showTemperature(response) {
-  console.log(response);
-  let temperature = Math.round(response.data.main.temp);
-  let centigradesValue = document.querySelector("#centigradesVal");
-  centigradesValue.innerHTML = temperature;
+  centigradesTempeture = response.data.main.temp;
+  let temperatureValue = document.querySelector("#temperatureValue");
+  temperatureValue.innerHTML = Math.round(centigradesTempeture);
   let weatherDescription = document.querySelector("#weather-description");
   weatherDescription.innerHTML = response.data.weather[0].description;
   let dayAndTime = document.querySelector("#day-and-time");
@@ -57,7 +56,28 @@ function handleInput(event) {
   searchCity(city);
 }
 
+let centigradesTempeture = null;
+
 let form = document.querySelector("#form");
 form.addEventListener("submit", handleInput);
+
+function showCentigradesTemperature(event) {
+  event.preventDefault();
+  centigradesLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let temperatureValue = document.querySelector("#temperatureValue");
+  temperatureValue.innerHTML = Math.round(centigradesTempeture);
+}
+function showFahrenheitTemperature(event) {
+  event.preventDefault();
+  centigradesLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let temperatureValue = document.querySelector("#temperatureValue");
+  temperatureValue.innerHTML = Math.round((centigradesTempeture * 9) / 5 + 32);
+}
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
+let centigradesLink = document.querySelector("#centigrades-link");
+centigradesLink.addEventListener("click", showCentigradesTemperature);
 
 searchCity("New York");

@@ -46,14 +46,11 @@ header {
     border: 1px solid #66819A;
     border-radius: 8px;
     background-color: #0A2239;
+    cursor: pointer;
     transition: all 200ms ease-in-out;
 }
-.header-input-container:hover {
-    border-color: #53A2BE;
-    cursor: pointer;
-}
 .header-input-container:focus {
-     border-color: #53A2BE;
+     border-color: yellow;
 }
 .header-input-container form {
     width: 90%;
@@ -147,6 +144,22 @@ main {
     font-size: 2rem;
     font-weight: bold;
 }
+.main-temperture-container p span a {
+    color: black;
+    text-decoration: none;
+}
+.main-temperture-container p span a:hover {
+     text-underline-position: under;
+     text-decoration: underline;
+}
+.main-temperture-container p span .active {
+    color: #9a9393;
+    cursor: default;
+    text-decoration: none;
+}
+.main-temperture-container p span .active:hover {
+   text-decoration: none;
+}
 .main-temperture-container p:nth-child(2) {
     text-transform: capitalize;
 }
@@ -157,16 +170,11 @@ main {
 .main-temperture-container p span:nth-child(1) {
     font-size: 8rem;
 }
-.main-temperture-container p span:nth-child(2),
-.main-temperture-container p span:nth-child(3),
-.main-temperture-container p span:nth-child(4) {
+.main-temperture-container p span:nth-child(2) {
     display: inline-block;
     vertical-align: top;
-    cursor: pointer;
 }
 .main-temperture-container p span:nth-child(2),
-.main-temperture-container p span:nth-child(3),
-.main-temperture-container p span:nth-child(4),
 .main-temperture-container p:nth-child(1),
 .main-temperture-container p:nth-child(2)
  {
