@@ -1,3 +1,4 @@
+ // position starts
 function showPosition(position) {
   let longitude = position.coords.longitude;
   let latitude = position.coords.latitude;
@@ -11,7 +12,9 @@ function showPosition(position) {
 function handleLocation() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
+// position ends
 
+// current date starts
 function currentDayAndTime(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
@@ -29,21 +32,27 @@ function currentDayAndTime(timestamp) {
     "Wednesday",
     "Thursday",
     "Friday",
-    "saturday",
+    "Saturday",
   ];
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
 }
+//Current day ends
+
 function showTemperature(response) {
+  console.log(response)
+  descriptionElement = response.data.weather[0].description;
+  iconElement = response.data.weather[0].icon;
   centigradesTempeture = response.data.main.temp;
   let temperatureValue = document.querySelector("#temperatureValue");
   temperatureValue.innerHTML = Math.round(centigradesTempeture);
   let weatherDescription = document.querySelector("#weather-description");
-  weatherDescription.innerHTML = response.data.weather[0].description;
+  weatherDescription.innerHTML = descriptionElement
   let dayAndTime = document.querySelector("#day-and-time");
   dayAndTime.innerHTML = currentDayAndTime(response.data.dt * 1000);
   let title = document.querySelector(".main-title");
   title.innerHTML = response.data.name;
+  showIcon(iconElement);
 }
 function searchCity(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`;
@@ -60,42 +69,520 @@ function handleInput(event) {
 
 function inputOnFocus() {
   document.querySelector(".header-button").style.display = "none";
-  document
-    .querySelector(".header-input-container")
-    .classList.add("header-input");
+  document.querySelector(".header-input-container").classList.add("header-input");
 }
 function inputOnBlur() {
   document.querySelector(".header-button").style.display = "block";
-  document
-    .querySelector(".header-input-container")
-    .classList.remove("header-input");
+  document.querySelector(".header-input-container").classList.remove("header-input");
   if (input.value != "") {
-    input.value = "";
+      input.value = "";
   }
 }
 
+// temperature convertion starts
 function showCentigradesTemperature(event) {
-  event.preventDefault();
-  centigradesLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let temperatureValue = document.querySelector("#temperatureValue");
-  temperatureValue.innerHTML = Math.round(centigradesTempeture);
+    event.preventDefault()
+    centigradesLink.classList.add("active");
+    fahrenheitLink.classList.remove("active");
+    let temperatureValue = document.querySelector("#temperatureValue");
+    temperatureValue.innerHTML = Math.round(centigradesTempeture);
 }
 function showFahrenheitTemperature(event) {
   event.preventDefault();
-  centigradesLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let temperatureValue = document.querySelector("#temperatureValue");
+  centigradesLink.classList.remove("active")
+  fahrenheitLink.classList.add("active")
+  let temperatureValue = document.querySelector("#temperatureValue")
   temperatureValue.innerHTML = Math.round((centigradesTempeture * 9) / 5 + 32);
-}
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
-let centigradesLink = document.querySelector("#centigrades-link");
-centigradesLink.addEventListener("click", showCentigradesTemperature);
 
+}
+// temperature convertion ends
+// show icon function starts
+function showIcon(iconElement) {
+  let icon = document.querySelector("#icon");
+  switch (iconElement) {
+    case "01d":
+      icon.setAttribute(
+        "src",
+        "https://media.giphy.com/media/5voKSah9SNQSoi8ATt/giphy.gif"
+      );
+      icon.setAttribute("alt", descriptionElement);
+      break;
+
+    case "02d":
+      icon.setAttribute(
+        "src",
+        "https://media.giphy.com/media/v2O5pMeohuPtOYJ36Z/giphy.gif"
+      );
+      icon.setAttribute("alt", descriptionElement);
+      break;
+
+    case "03d":
+      icon.setAttribute(
+        "src",
+        "https://media.giphy.com/media/DIT8x5i77MOtJEBR1j/giphy.gif"
+      );
+      icon.setAttribute("alt", descriptionElement);
+      break;
+
+    case "04d":
+      icon.setAttribute(
+        "src",
+        "https://media.giphy.com/media/vyMjCPX81vt4389w2c/giphy.gif"
+      );
+      icon.setAttribute("alt", descriptionElement);
+      break;
+
+    case "09d":
+      icon.setAttribute(
+        "src",
+        "https://media.giphy.com/media/2evfKjqO4tUZee7Icb/giphy.gif"
+      );
+      icon.setAttribute("alt", descriptionElement);
+      break;
+
+    case "10d":
+      icon.setAttribute(
+        "src",
+        "https://media.giphy.com/media/m8i73on3nuIt2Tz6B7/giphy.gif"
+      );
+      icon.setAttribute("alt", descriptionElement);
+      break;
+
+    case "11d":
+      icon.setAttribute(
+        "src",
+        "https://media.giphy.com/media/w37vXgNYAeXdiMFnm3/giphy.gif"
+      );
+      icon.setAttribute("alt", descriptionElement);
+     
+      break;
+
+    case "13d":
+      icon.setAttribute(
+        "src",
+        "https://media.giphy.com/media/S0lcUmplWuLlPuOwf0/giphy.gif"
+      );
+      icon.setAttribute("alt", descriptionElement);
+      break;
+
+    case "50d":
+      icon.setAttribute(
+        "src",
+        "https://media.giphy.com/media/f9AN1R6YelF3HGB9JD/giphy.gif"
+      );
+      icon.setAttribute("alt", descriptionElement);
+      break;
+
+    case "01n":
+      icon.setAttribute(
+        "src",
+        "https://media.giphy.com/media/5voKSah9SNQSoi8ATt/giphy.gif"
+      );
+      icon.setAttribute("alt", descriptionElement);
+      break;
+
+    case "02n":
+      icon.setAttribute(
+        "src",
+        "https://media.giphy.com/media/v2O5pMeohuPtOYJ36Z/giphy.gif"
+      );
+      icon.setAttribute("alt", descriptionElement);
+      break;
+
+    case "03n":
+      icon.setAttribute(
+        "src",
+        "https://media.giphy.com/media/DIT8x5i77MOtJEBR1j/giphy.gif"
+      );
+      icon.setAttribute("alt", descriptionElement);
+      break;
+
+    case "04n":
+      icon.setAttribute(
+        "src",
+        "https://media.giphy.com/media/vyMjCPX81vt4389w2c/giphy.gif"
+      );
+      icon.setAttribute("alt", descriptionElement);
+      break;
+
+    case "09n":
+      icon.setAttribute(
+        "src",
+        "https://media.giphy.com/media/2evfKjqO4tUZee7Icb/giphy.gif"
+      );
+      icon.setAttribute("alt", descriptionElement);
+      break;
+
+    case "10n":
+      icon.setAttribute(
+        "src",
+        "https://media.giphy.com/media/m8i73on3nuIt2Tz6B7/giphy.gif"
+      );
+      icon.setAttribute("alt", descriptionElement);
+      break;
+
+    case "11n":
+      icon.setAttribute(
+        "src",
+        "https://media.giphy.com/media/w37vXgNYAeXdiMFnm3/giphy.gif"
+      );
+      icon.setAttribute("alt", descriptionElement);
+      break;
+
+    case "13n":
+      icon.setAttribute(
+        "src",
+        "https://media.giphy.com/media/S0lcUmplWuLlPuOwf0/giphy.gif"
+      );
+      icon.setAttribute("alt", descriptionElement);
+      break;
+
+    case "50n":
+      icon.setAttribute(
+        "src",
+        "https://media.giphy.com/media/f9AN1R6YelF3HGB9JD/giphy.gif"
+      );
+      icon.setAttribute("alt", descriptionElement);
+      break;
+  }
+  showShowerRainAnimation(iconElement);
+  showRainAnimation(iconElement);
+  showThunderstormAnimation(iconElement);
+  showSnowAnimation(iconElement);
+  showMistAnimation(iconElement);
+  screenWidth();
+}
+// show icon function ends
+// show animations start
+function showShowerRainAnimation(iconElement) {
+  if (iconElement === "09d" || iconElement === "09n") {
+      backgroundAnimation.classList.add('shower-rain');
+  } else {
+      backgroundAnimation.classList.remove("shower-rain");
+  }
+}
+
+function showRainAnimation(iconElement) {
+  if (iconElement === "10d" || iconElement === "10n") {
+    backgroundAnimation.classList.add("light-rain");
+  } else {
+    backgroundAnimation.classList.remove("light-rain");
+  }
+}
+function showThunderstormAnimation(iconElement) {
+  if (iconElement === "11d" || iconElement === "11n") {
+    backgroundAnimation.classList.add("thunderstorm");
+  } else {
+    backgroundAnimation.classList.remove("thunderstorm");
+  }
+}
+function showSnowAnimation(iconElement) {
+  if (iconElement === "13d" || iconElement === "13n") {
+    backgroundAnimation.classList.add("snow-falling");
+  } else {
+    backgroundAnimation.classList.remove("snow-falling");
+  }
+}
+function showMistAnimation(iconElement) {
+  if (iconElement === "50d" || iconElement === "50n") {
+    backgroundAnimation.classList.add("mist");
+  } else {
+    backgroundAnimation.classList.remove("mist");
+  }
+}
+// show animations end
+// show background starts
+function screenWidth() {
+  if (window.matchMedia("(min-width: 432px)").matches) {
+    backgroundDAndN();
+    backgroundPrecipitations();
+    keepBackgroundMobile();
+    console.log("desktop");
+  } 
+  else {
+    mobileBackgroundDAndN();
+    mobileBackgroundPrecipitations();
+    console.log("mobile");
+    keepBackgroundDesktop();
+  }
+}
+
+function backgroundDAndN() {
+  if (iconElement.endsWith("d")) {
+    desktopBackground.classList.add("background-day");
+    desktopBackground.classList.remove(
+      "background-night",
+      "background-day-rain",
+      "background-night-rain",
+      "background-day-snow",
+      "background-night-snow"
+    );
+  } else if (iconElement.endsWith("n")) {
+    desktopBackground.classList.add("background-night");
+    desktopBackground.classList.remove(
+      "background-day",
+      "background-day-rain",
+      "background-night-rain",
+      "background-day-snow",
+      "background-night-snow"
+    );
+  }
+}
+function backgroundPrecipitations() {
+  if (
+    iconElement === "09d" ||
+    iconElement === "10d" ||
+    iconElement === "11d" ||
+    iconElement === "50d"
+  ) {
+    desktopBackground.classList.add("background-day-rain");
+    desktopBackground.classList.remove(
+      "background-day",
+      "background-night-rain",
+      "background-night",
+      "background-day-snow",
+      "background-night-snow"
+    );
+  } else if (
+    iconElement === "09n" ||
+    iconElement === "10n" ||
+    iconElement === "11d" ||
+    iconElement === "50n"
+  ) {
+    desktopBackground.classList.add("background-night-rain");
+    desktopBackground.classList.remove(
+      "background-day",
+      "background-day-rain",
+      "background-night",
+      "background-day-snow",
+      "background-night-snow"
+    );
+  } else if (iconElement === "13d") {
+    desktopBackground.classList.add("background-day-snow");
+    desktopBackground.classList.remove(
+      "background-day",
+      "background-day-rain",
+      "background-night",
+      "background-night-rain",
+      "background-night-snow"
+    );
+  } else if (iconElement === "13n") {
+    desktopBackground.classList.add("background-night-snow");
+    desktopBackground.classList.remove(
+      "background-day",
+      "background-day-rain",
+      "background-night",
+      "background-night-rain",
+      "background-day-snow"
+    );
+  }
+}
+function mobileBackgroundDAndN() {
+    if (iconElement.endsWith("d")) {
+      mobileBackground.classList.add("mobile-background-d");
+      mobileBackground.classList.remove(
+        "mobile-background-n",
+        "mobile-background-d-rain",
+        "mobile-background-n-rain",
+        "mobile-background-d-snow",
+        "mobile-background-n-snow"
+      );
+    }
+    else if (iconElement.endsWith("n")) {
+      mobileBackground.classList.add("mobile-background-n");
+      mobileBackground.classList.remove(
+        "mobile-background-d",
+        "mobile-background-d-rain",
+        "mobile-background-n-rain",
+        "mobile-background-d-snow",
+        "mobile-background-n-snow"
+      );
+    }
+ }
+ 
+function mobileBackgroundPrecipitations() {
+  if (
+    iconElement === "09d" ||
+    iconElement === "10d" ||
+    iconElement === "11d" ||
+    iconElement === "50d"
+  ) {
+    mobileBackground.classList.add("mobile-background-d-rain");
+    mobileBackground.classList.remove(
+      "mobile-background-d",
+      "mobile-background-n",
+      "mobile-background-n-rain",
+      "mobile-background-d-snow",
+      "mobile-background-n-snow"
+      );
+  }
+  else if (
+    iconElement === "09n" ||
+    iconElement === "10n" ||
+    iconElement === "11n" ||
+    iconElement === "50n") {
+      mobileBackground.classList.add("mobile-background-n-rain");
+      mobileBackground.classList.remove(
+      "mobile-background-d",
+      "mobile-background-n",
+      "mobile-background-d-rain",
+      "mobile-background-d-snow",
+      "mobile-background-n-snow"
+      );
+    }
+    else if (iconElement === "13d") {
+      mobileBackground.classList.add("mobile-background-d-snow");
+      mobileBackground.classList.remove(
+        "mobile-background-d",
+        "mobile-background-n",
+        "mobile-background-d-rain",
+        "mobile-background-n-rain",
+        "mobile-background-n-snow"
+      );
+    }
+    else if (iconElement === "13n") {
+      mobileBackground.classList.add("mobile-background-n-snow")
+      mobileBackground.classList.remove(
+        "mobile-background-d",
+        "mobile-background-n",
+        "mobile-background-d-rain",
+        "mobile-background-n-rain",
+        "mobile-background-d-snow"
+      );
+    }
+}
+   
+// show background ends
+// keep the background display in desktop when device width changes *starts*
+function keepBackgroundDesktop() {
+    if (mobileBackground.classList.contains("mobile-background-d")) {
+      desktopBackground.classList.add("background-day");
+      desktopBackground.classList.remove(
+        "background-night",
+        "background-day-rain",
+        "background-night-rain",
+        "background-day-snow",
+        "background-night-snow"
+      );
+    } else if (mobileBackground.classList.contains("mobile-background-n")) {
+      desktopBackground.classList.add("background-night");
+      desktopBackground.classList.remove(
+        "background-day",
+        "background-day-rain",
+        "background-night-rain",
+        "background-day-snow",
+        "background-night-snow"
+      );
+    } else if (
+      mobileBackground.classList.contains("mobile-background-d-rain")
+    ) {
+      desktopBackground.classList.add("background-day-rain");
+      desktopBackground.classList.remove(
+        "background-day",
+        "background-night",
+        "background-night-rain",
+        "background-day-snow",
+        "background-night-snow"
+      );
+    } else if (
+      mobileBackground.classList.contains("mobile-background-n-rain")
+    ) {
+      desktopBackground.classList.add("background-night-rain");
+      desktopBackground.classList.remove(
+        "background-day",
+        "background-night",
+        "background-day-rain",
+        "background-day-snow",
+        "background-night-snow"
+      );
+    } else if (
+      mobileBackground.classList.contains("mobile-background-d-snow")
+    ) {
+      desktopBackground.classList.add("background-day-snow");
+      desktopBackground.classList.remove(
+        "background-day",
+        "background-night",
+        "background-day-rain",
+        "background-night-rain",
+        "background-night-snow"
+      );
+    } else if (
+      mobileBackground.classList.contains("mobile-background-n-snow")
+    ) {
+      desktopBackground.classList.add("background-night-snow");
+      desktopBackground.classList.remove(
+        "background-day",
+        "background-night",
+        "background-day-rain",
+        "background-night-rain",
+        "background-day-snow"
+      );
+    }
+}
+// keep the background display in desktop when device width changes *ends*
+// keep the background display in mobile when device width changes *starts*
+function keepBackgroundMobile() {
+  if (desktopBackground.classList.contains("background-day")) {
+    mobileBackground.classList.add("mobile-background-d");
+    mobileBackground.classList.remove(
+      "mobile-background-n",
+      "mobile-background-d-rain",
+      "mobile-background-n-rain",
+      "mobile-background-d-snow",
+      "mobile-background-n-snow"
+    );
+  } else if (desktopBackground.classList.contains("background-night")) {
+    mobileBackground.classList.add("mobile-background-n");
+    mobileBackground.classList.remove(
+      "mobile-background-d",
+      "mobile-background-d-rain",
+      "mobile-background-n-rain",
+      "mobile-background-d-snow",
+      "mobile-background-n-snow"
+    );
+  } else if (desktopBackground.classList.contains("background-day-rain")) {
+    mobileBackground.classList.add("mobile-background-d-rain");
+    mobileBackground.classList.remove(
+      "mobile-background-d",
+      "mobile-background-n",
+      "mobile-background-n-rain",
+      "mobile-background-d-snow",
+      "mobile-background-n-snow"
+    );
+  } else if (desktopBackground.classList.contains("background-night-rain")) {
+    mobileBackground.classList.add("mobile-background-n-rain");
+    mobileBackground.classList.remove(
+      "mobile-background-d",
+      "mobile-background-n",
+      "mobile-background-d-rain",
+      "mobile-background-d-snow",
+      "mobile-background-n-snow"
+    );
+  } else if (desktopBackground.classList.contains("background-day-snow")) {
+    mobileBackground.classList.add("mobile-background-d-snow");
+    mobileBackground.classList.remove(
+      "mobile-background-d",
+      "mobile-background-n",
+      "mobile-background-d-rain",
+      "mobile-background-n-rain",
+      "mobile-background-n-snow"
+    );
+  } else if (desktopBackground.classList.contains("background-night-snow")) {
+    mobileBackground.classList.add("mobile-background-n-snow");
+    mobileBackground.classList.remove(
+      "mobile-background-d",
+      "mobile-background-n",
+      "mobile-background-d-rain",
+      "mobile-background-n-rain",
+      "mobile-background-d-snow"
+    );
+  }
+}
+// keep the background display in mobile when device width changes *ends*
+
+let iconElement = null;
+let descriptionElement = null;
 let centigradesTempeture = null;
-let form = document.querySelector("#form");
-form.addEventListener("submit", handleInput);
 let input = document.querySelector("#searchInput");
 input.addEventListener("focus", inputOnFocus);
 input.addEventListener("blur", inputOnBlur);
@@ -103,5 +590,14 @@ let inputLens = document.querySelector(".input-lens");
 inputLens.addEventListener("click", handleInput);
 let buttonPosition = document.querySelector(".header-button");
 buttonPosition.addEventListener("click", handleLocation);
+let form = document.querySelector("#form");
+form.addEventListener("submit", handleInput);
+let desktopBackground = document.querySelector("#background")
+let mobileBackground = document.querySelector("#mobile-background")
+let backgroundAnimation = document.querySelector("#main-weather-animation");
+let fahrenheitLink = document.querySelector("#fahrenheit-link")
+fahrenheitLink.addEventListener("click", showFahrenheitTemperature)
+let centigradesLink = document.querySelector("#centigrades-link")
+centigradesLink.addEventListener("click", showCentigradesTemperature)
 
 searchCity("New York");

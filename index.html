@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,8 +13,7 @@
         rel="stylesheet">
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
 </head>
-
-<body>
+<body id="background">
     <div class="body-left"></div>
     <div class="body-container">
         <header>
@@ -36,45 +34,51 @@
                 </ul>
             </nav>
         </header>
-        <main>
-            <section class="main-weather-container" id="weater">
-
-                <p>
-                    <span class="spanCity"></span>
-                    <span class="main-title"></span>
-                </p>
-                <p id="day-and-time"></p>
-                <div class="main-temperture-container">
+        <main id="mobile-background">
+            <div id="main-weather-animation">
+                <section class="main-weather-container" id="weater">
                     <p>
-                        <span id="temperatureValue"></span>
-                        <span><a href="#" id="centigrades-link" class="active">°C</a> | <a href="#"
-                                id="fahrenheit-link">°F</a></span>
+                        <span class="spanCity"></span>
+                        <span class="main-title"></span>
                     </p>
+                    <p id="day-and-time"></p>
+                    <div class="main-temperature-icon-container">
+                        <div class="main-temperture-container">
+                            <p>
+                                <span id="temperatureValue"></span>
+                                <span><a href="#" id="centigrades-link" class="active">°C</a> | <a href="#"
+                                        id="fahrenheit-link">°F</a></span>
+                            </p>
+                        </div>
+                        <div id="main-icon-container">
+                            <img src="" id="icon" alt="">
+                        </div>
+                    </div>
                     <p id="weather-description"></p>
-                </div>
-            </section>
-            <section class="main-days-container">
-                <div>
-                    <p>Next day <br /><span>☀️</span></p>
-                    <p>34<span>°C | °F</span></p>
-                </div>
-                <div>
-                    <p>Next day<br /><span>🌤</span></p>
-                    <p>34<span>°C | °F</span></p>
-                </div>
-                <div>
-                    <p>Next day <br /><span>🌨</span></p>
-                    <p>34<span>°C | °F</span></p>
-                </div>
-                <div>
-                    <p>Next day <br /><span>☁️</span></p>
-                    <p>34<span>°C | °F</span></p>
-                </div>
-                <div>
-                    <p>Next day <br /><span>⛈</span></p>
-                    <p>34<span>°C | °F</span></p>
-                </div>
-            </section>
+                </section>
+                <section class="main-days-container">
+                    <div>
+                        <p>Next day <br /><span>☀️</span></p>
+                        <p>34<span>°C | °F</span></p>
+                    </div>
+                    <div>
+                        <p>Next day<br /><span>🌤</span></p>
+                        <p>34<span>°C | °F</span></p>
+                    </div>
+                    <div>
+                        <p>Next day <br /><span>🌨</span></p>
+                        <p>34<span>°C | °F</span></p>
+                    </div>
+                    <div>
+                        <p>Next day <br /><span>☁️</span></p>
+                        <p>34<span>°C | °F</span></p>
+                    </div>
+                    <div>
+                        <p>Next day <br /><span>⛈</span></p>
+                        <p>34<span>°C | °F</span></p>
+                    </div>
+                </section>
+            </div>
         </main>
         <footer>
             <h1 class="footer-webname">Weather Today</h1>
@@ -85,5 +89,4 @@
     <div class="body-right"></div>
     <script src="main.js"></script>
 </body>
-
 </html>

@@ -7,6 +7,15 @@ html {
     font-family: 'Roboto', sans-serif;
     font-size: 62.5%;
 }
+/* desktop background off*/
+.background-day,
+.background-night,
+.background-day-rain, 
+.background-night-rain, 
+.background-day-snow
+{
+    background-image: none;
+}
 .body-container {
     display: flex;
     flex-direction: column;
@@ -21,6 +30,7 @@ header {
     width: 100%;
     min-width: 320px;
     max-width: 432px;
+    z-index: 2;
 }
 .header-container {
     position: relative;
@@ -45,9 +55,8 @@ header {
     border-radius: 8px;
     background-color: #0A2239;
     cursor: pointer;
-    transition: all 200ms ease-in-out;
 }
-/* header input animation starts */
+/* header input animation starts*/
 .header-input {
     animation: display-input 200ms linear 1;
     border-color: #8caecf;
@@ -69,16 +78,16 @@ header {
     width: 90%;
     min-width: 300px;  
 }
-/* header input animation ends */
+/* header input animation ends*/
 .header-input-container form {
     width: 90%;
 }
 .header-input-container form input {
     width: 99%;
-    min-width: 220px;
     max-width: 400px;
     height: 30px;
     padding: 0 12px;
+    font-size: 1.6rem;
     color: #fffcfc;
     border: none;
     outline: none;
@@ -112,7 +121,7 @@ header {
     cursor: pointer;
 }
 header nav {
-    height: 50px;
+    height: 40px;
     background-color: #13406A;
 }
 nav ul {
@@ -126,8 +135,8 @@ nav ul {
 nav ul a {
     display: inline-block;
     width: 100%;
-    padding: 8px;
-    font-size: 1.6rem;
+    padding: 4px;
+    font-size: 1.5rem;
     text-decoration: none;
     color: #FFFCFC;
     transition: all 200ms ease-in-out;
@@ -143,19 +152,151 @@ main {
     flex-direction: column;
     align-items: center;
     position: fixed;
-    top: 100px;
     bottom: 0;
+    top: 90px;
     width: 100%;
     max-width: 432px;
     min-width: 320px;
-    border: 15px solid #f7d307;
-    border-bottom: 90px solid #f7d307;
-    background-image: url('https://i.postimg.cc/fWGL3ZQt/mobilelandscape.png');
+    border: 12px solid #f7d307;
+    border-bottom: 80px solid #f7d307;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
-.spanCity {
+/* mobile backgrounds start*/
+.mobile-background-d {
+    background-image: url('https://i.postimg.cc/qq1JSdh1/mobilelandscapeimg.png');
+}
+.mobile-background-n {
+    background-image: url('https://i.postimg.cc/qq1JSdh1/mobilelandscapeimg.png');
+}
+.mobile-background-d-rain {
+    background-image: url('https://i.postimg.cc/zBm4zPY8/mobilelandscaperainimg.png');
+}
+.mobile-background-n-rain {
+    background-image: url('https://i.postimg.cc/zBm4zPY8/mobilelandscaperainimg.png');
+}
+.mobile-background-d-snow {
+    background-image: url('https://i.postimg.cc/PqM1JPBJ/mobilelandscapesnowimg.png');
+}
+.mobile-background-n-snow {
+    background-image: url('https://i.postimg.cc/PqM1JPBJ/mobilelandscapesnowimg.png');
+}
+/* mobile backgrounds ends*/
+/* animations start*/
+#main-weather-animation {
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: scroll;
+}
+/* light rain animation*/
+.light-rain {
+    background-color: rgba(212, 212, 212, 0.3);
+    background-image: url("https://i.postimg.cc/X7Zk60gG/rain-animation-mobile2.png");
+    animation: light-rain 0.3s linear infinite;
+}
+
+@keyframes light-rain{
+    from{
+        background-position: 0% 0%;
+    }
+    to{
+            background-position: -10% -100%;
+    }
+}
+/* shower rain animation*/
+.shower-rain {
+    background-color: rgba(212, 212, 212, 0.3);
+    background-image: url("https://i.postimg.cc/7hhM6v8R/rain-animation-mobile.png");
+    animation: shower-rain 0.3s linear infinite;
+}
+.thunderstorm {
+    background-color: rgba(212, 212, 212, 0.3);
+    background-image: url('assest/rain-animation-mobile.png');
+    animation: shower-rain 0.3s linear infinite;
+}
+/* thunderstorm animation*/
+@keyframes shower-rain{
+    from{
+        background-position: 0% 0%;
+    }
+    to{
+        background-position: -10% -80%;
+    }
+}
+.thunderstorm::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://i.postimg.cc/sDfbY1sF/lightning.png");
+    animation: lightning 4s linear infinite;
+    opacity: 1;
+}
+@keyframes lightning{
+    0%{
+        opacity: 0;
+    }
+    20%{
+        opacity: 0;
+    }
+    21%{
+        opacity: 1;
+        background-color: rgba(212, 212, 212, 0.5);
+    }
+    25%{
+        opacity: 0;
+        }
+    30%{
+        opacity: 0;
+        }
+    31%{
+        opacity: 1;
+        background-color: rgba(212, 212, 212, 0.5);
+    }
+    35%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+/* snow-falling animation*/
+.snow-falling {
+    background-image: url("https://i.postimg.cc/8CTvc8Lb/snow1.png"), url("https://i.postimg.cc/05hcQQjd/snow2.png"), url("https://i.postimg.cc/C1zsMTVQ/snow3.png");
+    animation: snow-falling 8s linear infinite;
+}
+@keyframes snow-falling {
+    from{
+        background-position: 0 0, 0 0, 0 0;
+    }
+    to{
+        background-position: 125px 250px, 100px 100px, 75px 75px;
+    }
+}
+/* mist animation*/
+.mist {
+    background-image: url("https://i.postimg.cc/pLf8PV5T/mist.png");
+    animation: mist 50s linear infinite;
+}
+@keyframes mist {
+    0%{
+        background-position: 0% 0%;
+    }
+    33%{
+        background-position: 100% 0%;
+    }
+    66%{
+        background-position: -100, 0%;
+    }
+    100%{
+        background-position: 0%, 0%;
+    }
+}
+ /* animations end*/
+ .spanCity {
     display: inline-block;
     vertical-align: sub;
     width: 25px;
@@ -167,19 +308,30 @@ main {
     background-size: cover;
 }
 .main-weather-container {
+    margin-top: 16px;
+    text-align: center;
+}
+.main-temperature-icon-container {
     display: flex;
-    flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
-    margin-top: 20px;
-    padding: 8px; 
+    width: 100%; 
+}
+.main-weather-container div img {
+    width: 130px;
+    height: 130px;
 }
 .main-title {
     margin-bottom: 8px;
     font-size: 2rem;
     font-weight: bold;
+    text-align: center;
+}
+.main-temperture-container {
+    z-index: 1;
 }
 .main-temperture-container p span a {
-    color: black;
+    color: #9a9393;
     text-decoration: none;
 }
 .main-temperture-container p span a:hover {
@@ -187,22 +339,25 @@ main {
      text-decoration: underline;
 }
 .main-temperture-container p span .active {
-    color: #9a9393;
+    color: black;
     cursor: default;
     text-decoration: none;
 }
 .main-temperture-container p span .active:hover {
    text-decoration: none;
 }
-.main-temperture-container p:nth-child(2) {
+.main-weather-container p:nth-child(4) {
+    margin-top: -8px;
+    font-size: 1.4rem;
     text-transform: capitalize;
 }
 .main-weather-container p:nth-child(2) {
     margin-top: 8px;
     font-size: 1.4rem;
+    margin-bottom: -8px;
 }
 .main-temperture-container p span:nth-child(1) {
-    font-size: 8rem;
+    font-size: 6rem;
 }
 .main-temperture-container p span:nth-child(2) {
     display: inline-block;
@@ -245,6 +400,7 @@ main {
     width: 100%;
     max-width: 432px;
     min-width: 320px;
+    line-height: 1;
  }
  .footer-webname {
     font-family: 'Island Moments', cursive;
@@ -261,24 +417,59 @@ main {
     color: #13406A;
     text-decoration: none;
  }
- @media (min-width: 433px) {
+ @media (min-width: 432px) and (min-height: 300px) {
     body {
         display: grid;
         grid-template-columns: 1fr minmax(320px, 432px) 1fr;
         align-items: center;
         height: 100vh;
-        background-image: url('https://i.postimg.cc/VsHY59Jh/screendesktoplandscape.png');
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
     }
+/* desktop backgrounds start*/
+    .background-day{
+        background-image: url('https://i.postimg.cc/W1VXQ3tX/desktoplandscapeimg.png');
+    }
+    .background-day-rain {
+       background-image: url('https://i.postimg.cc/ZqstLg4P/desktoplandscaperainimg.png'); 
+    }
+    .background-day-snow {
+        background-image: url('https://i.postimg.cc/Gpjqj1Q9/desktoplandscapesnowimg.png');
+    }
+    .background-night{
+        background-image: url('https://i.postimg.cc/W1VXQ3tX/desktoplandscapeimg.png');
+    }
+    .background-night-rain {
+        background-image: url('https://i.postimg.cc/ZqstLg4P/desktoplandscaperainimg.png');
+    }
+    .background-night-snow {
+        background-image: url('https://i.postimg.cc/Gpjqj1Q9/desktoplandscapesnowimg.png');
+    }
+/* desktop backgrounds ends*/
+
     .body-left, .body-right {
         width: 100%;
         height: 100vh;
         background-color: rgba(254, 254, 254, 0.5);
         backdrop-filter: blur(2px);
     }
-    main {
-    background-image: none;
+/* mobile backgrounds off*/
+    .mobile-background-d,
+    .mobile-background-n,
+    .mobile-background-d-rain, 
+    .mobile-background-n-rain, 
+    .mobile-background-d-snow,
+    .mobile-background-n-snow
+    {
+        background-image: none;
+    }
+    .main-temperture-container p span:nth-child(1) {
+        font-size: 7rem;
+    }
+ }
+ @media (min-height: 640px) {
+     #main-weather-animation {
+        overflow: hidden;
     }
  }
