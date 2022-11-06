@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Weather Today</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,700;1,300&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="body-container">
+        <header>
+            <div class="header-container">
+                <div class="header-input-container">
+                    <span class="input-lens"></span>
+                    <form action="" autocomplete="off" id="form">
+                        <input type="search" id="searchInput" placeholder="Enter a city">
+                    </form>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Yesterday</a< /li>
+                    <li><a href="#weather">Today</a< /li>
+                    <li><a href="/">Tomorrow</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section class="main-weather-container" id="weater">
+
+                <p class="main-title"><span class="spanCity"></span></p>
+
+                <div class="main-temperture-container">
+                    <p>
+                        <span id="centigradesVal"></span>
+                        <span id="centigradesButton">°C</span>
+                        <span>|</span>
+                        <span id="fahrenheitButton">°F</span>
+                    </p>
+                    <p id="day-and-time"></p>
+                    <p id="weather-description"></p>
+                </div>
+            </section>
+            <section class="main-days-container">
+                <div>
+                    <p>Next day <br /><span>☀️</span></p>
+                    <p>34<span>°C | °F</span></p>
+                </div>
+                <div>
+                    <p>Next day<br /><span>🌤</span></p>
+                    <p>34<span>°C | °F</span></p>
+                </div>
+                <div>
+                    <p>Next day <br /><span>🌨</span></p>
+                    <p>34<span>°C | °F</span></p>
+                </div>
+                <div>
+                    <p>Next day <br /><span>☁️</span></p>
+                    <p>34<span>°C | °F</span></p>
+                </div>
+                <div>
+                    <p>Next day <br /><span>⛈</span></p>
+                    <p>34<span>°C | °F</span></p>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
