@@ -37,10 +37,8 @@ header {
     align-items: center;
     position: absolute;
     top: 7.5px;
-    left: 50%;
-    transform: translate(-50%);
-    width: 90%;
-    min-width: 300px;
+    left: 12px;
+    width: 72%;
     max-width: 400px;
     height: 35px;
     border: 1px solid #66819A;
@@ -49,19 +47,39 @@ header {
     cursor: pointer;
     transition: all 200ms ease-in-out;
 }
-.header-input-container:focus {
-     border-color: yellow;
+/* header input animation starts */
+.header-input {
+    animation: display-input 200ms linear 1;
+    border-color: #8caecf;
+    left: 50%;
+    transform: translate(-50%);
 }
+@keyframes display-input {
+    0% {
+        width: 72%;
+    } 
+    50% {
+        width: 80%;
+    }
+    100% {
+        width: 90%;
+    }
+}
+.header-input {
+    width: 90%;
+    min-width: 300px;  
+}
+/* header input animation ends */
 .header-input-container form {
     width: 90%;
 }
 .header-input-container form input {
-    width: 100%;
+    width: 99%;
     min-width: 220px;
     max-width: 400px;
     height: 30px;
-    padding: 8px;
-    color: #FFFCFC;
+    padding: 0 12px;
+    color: #fffcfc;
     border: none;
     outline: none;
     background-color: #0A2239;
@@ -69,10 +87,29 @@ header {
 .input-lens {
     width: 20px;
     height: 20px;
+    margin-left: 12px;
     background-image: url('https://i.postimg.cc/B6GrN317/search-icon.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+}
+.header-button {
+    position: absolute;
+    top: 7.5px;
+    right: 12px;
+    width: 20%;
+    height: 35px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.6rem;
+    color: #6f93b5;
+    border: 1px solid #6f93b5;
+    border-radius: 12px;
+    background-color: #13406A;
+}
+.header-button:hover {
+    color: #8caecf;
+    border-color: #8caecf;
+    cursor: pointer;
 }
 header nav {
     height: 50px;
@@ -86,9 +123,6 @@ nav ul {
     text-align: center;
     list-style: none;
 }
-/* nav ul li {
-    padding: 5px;
-} */
 nav ul a {
     display: inline-block;
     width: 100%;

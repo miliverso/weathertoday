@@ -8,7 +8,9 @@ function showPosition(position) {
   axios.get(`${apiUrl}&appid=${apiKey}${degress}`).then(showTemperature);
 }
 
-navigator.geolocation.getCurrentPosition(showPosition);
+function handleLocation() {
+  navigator.geolocation.getCurrentPosition(showPosition);
+}
 
 function currentDayAndTime(timestamp) {
   let date = new Date(timestamp);
@@ -56,10 +58,21 @@ function handleInput(event) {
   searchCity(city);
 }
 
-let centigradesTempeture = null;
-
-let form = document.querySelector("#form");
-form.addEventListener("submit", handleInput);
+function inputOnFocus() {
+  document.querySelector(".header-button").style.display = "none";
+  document
+    .querySelector(".header-input-container")
+    .classList.add("header-input");
+}
+function inputOnBlur() {
+  document.querySelector(".header-button").style.display = "block";
+  document
+    .querySelector(".header-input-container")
+    .classList.remove("header-input");
+  if (input.value != "") {
+    input.value = "";
+  }
+}
 
 function showCentigradesTemperature(event) {
   event.preventDefault();
@@ -79,5 +92,16 @@ let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
 let centigradesLink = document.querySelector("#centigrades-link");
 centigradesLink.addEventListener("click", showCentigradesTemperature);
+
+let centigradesTempeture = null;
+let form = document.querySelector("#form");
+form.addEventListener("submit", handleInput);
+let input = document.querySelector("#searchInput");
+input.addEventListener("focus", inputOnFocus);
+input.addEventListener("blur", inputOnBlur);
+let inputLens = document.querySelector(".input-lens");
+inputLens.addEventListener("click", handleInput);
+let buttonPosition = document.querySelector(".header-button");
+buttonPosition.addEventListener("click", handleLocation);
 
 searchCity("New York");
