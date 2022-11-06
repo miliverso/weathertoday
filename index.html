@@ -27,8 +27,8 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="/">Yesterday</a< /li>
-                    <li><a href="#weather">Today</a< /li>
+                    <li><a href="/">Yesterday</a</li>
+                    <li><a href="#weather">Today</a</li>
                     <li><a href="/">Tomorrow</a></li>
                 </ul>
             </nav>
@@ -36,8 +36,11 @@
         <main>
             <section class="main-weather-container" id="weater">
 
-                <p class="main-title"><span class="spanCity"></span></p>
-
+                <p>
+                    <span class="spanCity"></span>
+                    <span class="main-title"></span>
+                </p>
+                <p id="day-and-time"></p>
                 <div class="main-temperture-container">
                     <p>
                         <span id="centigradesVal"></span>
@@ -45,7 +48,6 @@
                         <span>|</span>
                         <span id="fahrenheitButton">°F</span>
                     </p>
-                    <p id="day-and-time"></p>
                     <p id="weather-description"></p>
                 </div>
             </section>

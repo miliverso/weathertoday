@@ -58,10 +58,6 @@ function handleInput(event) {
 }
 
 let form = document.querySelector("#form");
-form.addEventListener("submit", searchCity);
+form.addEventListener("submit", handleInput);
 
-function showTemperatureNow(response) {
-  let title = document.querySelector(".main-title");
-  title.innerHTML = response.data[0].name;
-}
 searchCity("New York");

@@ -73,7 +73,7 @@ body {
 .input-lens {
     width: 25px;
     height: 25px;
-    background-image: url('search.svg');
+    background-image: url('assest/search.svg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -115,10 +115,11 @@ main {
     align-items: center;
 }
 .spanCity {
-    width: 15px;
-    height: 15px;
+    width: 16px;
+    height: 16px;
+    font-size: 2rem;
     display: inline-block;
-    background-image: url('location-point.svg');
+    background-image: url('assest/location-point.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -129,11 +130,12 @@ main {
     align-items: center;
     margin-top: 20px;
     padding: 8px;
-
+    
 }
 .main-title {
     margin-bottom: 8px;
     font-size: 2rem;
+    font-weight: bold;
 }
 .main-temperture-container {
     display: flex;
@@ -141,6 +143,10 @@ main {
 }
 .main-weather-container p {
     text-transform: capitalize;
+}
+.main-weather-container p:nth-child(2) {
+    font-size: 1.4rem;
+    margin-top: 8px;
 }
 .main-temperture-container p span:nth-child(1) {
     font-size: 8rem;
@@ -153,17 +159,15 @@ main {
     vertical-align: top;
 }
 .main-temperture-container p span:nth-child(2),
-.main-temperture-container p:nth-child(1),
-.main-temperture-container p:nth-child(3),
 .main-temperture-container p span:nth-child(3),
-.main-temperture-container p span:nth-child(4) {
-    font-size: 1.8rem;
+.main-temperture-container p span:nth-child(4),
+.main-temperture-container p:nth-child(1),
+.main-temperture-container p:nth-child(2)
+
+ {
+    font-size: 1.6rem;
     text-align: center;
-    margin-top: 8px;
-}
-.main-temperture-container p:nth-child(2) {
-    text-align: center;
-    font-size: 1.8rem;
+    margin-top: 4px;
 }
 .main-days-container {
     display: flex;
