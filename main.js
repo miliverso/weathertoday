@@ -56,7 +56,7 @@ function showTemperature(response) {
   title.innerHTML = response.data.name;
   
   showIcon(iconElement);
-  displayForescast(response.data.coord);
+  displayForecast(response.data.coord);
 }
 function searchCity(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`;
@@ -70,7 +70,7 @@ function handleInput(event) {
   let city = document.querySelector("#searchInput").value;
   searchCity(city);
 }
-
+// input animation starts
 function inputOnFocus() {
   document.querySelector(".header-button").style.display = "none";
   document.querySelector(".header-input-container").classList.add("header-input");
@@ -82,16 +82,40 @@ function inputOnBlur() {
       input.value = "";
   }
 }
+// input animation ends
 
+// temperature convertion starts
+function showCentigradesForecastTemp() {
+  let temperaturesMin = [centigradesTempMin, centigradesTempMin1, centigradesTempMin2, centigradesTempMin3, centigradesTempMin4];
+  let temperatiresMax = [centigradesTempMax, centigradesTempMax1, centigradesTempMax2, centigradesTempMax3, centigradesTempMax4];
+  let spanTemperaturesMin = Array.from(document.querySelectorAll("#temperature-min"));
+  let spanTemperaturesMax = Array.from(document.querySelectorAll("#temperature-max"));
+  
+  for (let i = 0; i < spanTemperaturesMax.length; i++) {
+    spanTemperaturesMax[i].innerHTML = `${Math.round(temperatiresMax[i])}°`;
+    spanTemperaturesMin[i].innerHTML = `${Math.round(temperaturesMin[i])}°`;
+  }
+}
 function showCentigradesTemperature(event) {
-  event.preventDefault()
+  event.preventDefault();
   centigradesLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
   let temperatureValue = document.querySelector("#temperatureValue");
   temperatureValue.innerHTML = Math.round(centigradesTempeture);
  
+  showCentigradesForecastTemp();
 }
-
+function showFahrenheitForecastTemp() {
+  let temperaturesMin = [centigradesTempMin, centigradesTempMin1, centigradesTempMin2, centigradesTempMin3, centigradesTempMin4];
+  let temperatiresMax = [centigradesTempMax, centigradesTempMax1, centigradesTempMax2, centigradesTempMax3, centigradesTempMax4];
+  let spanTemperaturesMin = Array.from(document.querySelectorAll("#temperature-min"));
+  let spanTemperaturesMax = Array.from(document.querySelectorAll("#temperature-max"));
+  
+  for (let i = 0; i < spanTemperaturesMax.length; i++) {
+    spanTemperaturesMax[i].innerHTML = `${Math.round((temperatiresMax[i] * 9) / 5 + 32)}°`;
+    spanTemperaturesMin[i].innerHTML = `${Math.round((temperaturesMin[i] * 9) / 5 + 32)}°`;
+  }
+}
 function showFahrenheitTemperature(event) {
   event.preventDefault();
   centigradesLink.classList.remove("active")
@@ -99,7 +123,7 @@ function showFahrenheitTemperature(event) {
   let temperatureValue = document.querySelector("#temperatureValue")
   temperatureValue.innerHTML = Math.round((centigradesTempeture * 9) / 5 + 32);
 
-  showFahrenheitForescastTemp();
+  showFahrenheitForecastTemp();
 }
 // temperature convertion ends
 
@@ -589,8 +613,8 @@ function keepBackgroundMobile() {
 }
 // keep the background display in mobile when device width changes *ends*
 
-// forescast starts//
-function displayForescastIcon(iconInformation) {
+// forecast starts//
+function displayForecastIcon(iconInformation) {
   let icon = iconInformation.icon;
   let description = iconInformation.description;
   
@@ -678,45 +702,60 @@ function formatDay(timestamp) {
   return days[day]
 
 }
-function forescast(response) {
+function forecast(response) {
     console.log(response)
-    let forescastElement = document.querySelector(".forescast-container");
+    let forecastElement = document.querySelector(".forecast-container");
 
     let days = response.data.daily;
+    centigradesTempMin = response.data.daily[0].temp.min;
+    centigradesTempMin1 = response.data.daily[1].temp.min;
+    centigradesTempMin2 = response.data.daily[2].temp.min;
+    centigradesTempMin3 = response.data.daily[3].temp.min;
+    centigradesTempMin4 = response.data.daily[4].temp.min;
+    centigradesTempMax = response.data.daily[0].temp.max;
+    centigradesTempMax1 = response.data.daily[1].temp.max;
+    centigradesTempMax2 = response.data.daily[2].temp.max;
+    centigradesTempMax3 = response.data.daily[3].temp.max;
+    centigradesTempMax4 = response.data.daily[4].temp.max;
 
-
-    let forescastHtml = "";
+    let forecastHtml = "";
 
     days.forEach(function(day, index) {
       if (index < 5) {
-        centigradesTempMax = Math.round(day.temp.max);
-        centigradesTempMin = Math.round(day.temp.min);
-        forescastHtml =
-        forescastHtml +
-         `<div><div class="forescast-day">${formatDay(day.dt)}</div>
-                      <div class="forescast-img">
-                         ${displayForescastIcon(day.weather[0])}
+        forecastHtml =
+          forecastHtml +
+          `<div><div class="forecast-day">${formatDay(day.dt)}</div>
+                      <div class="forecast-img">
+                         ${displayForecastIcon(day.weather[0])}
                       </div>
-                      <div class="forescast-temperature">
-                          <span id="temperature-min">${centigradesTempMax}°</span>
-                          <span id="temperature-max">${centigradesTempMin}°</span>
+                      <div class="forecast-temperature">
+                          <span id="temperature-min">${Math.round(day.temp.max)}°</span>
+                          <span id="temperature-max">${Math.round(day.temp.min)}°</span>
                       </div></div>`;
       }
     })
 
-     forescastElement.innerHTML = forescastHtml;
+     forecastElement.innerHTML = forecastHtml;
 
 }
-function displayForescast(coordinates) {
+function displayForecast(coordinates) {
   let apiKey = "4b3503b2f08a729413c4d33ef1186004";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
 
-  axios.get(apiUrl).then(forescast);
+  axios.get(apiUrl).then(forecast);
 }
-// forescast ends//
+// forecast ends//
 
-let centigradesTemMin = null;
-let centigradesTemMax = null;
+let centigradesTempMin = null;
+let centigradesTempMin1 = null;
+let centigradesTempMin2 = null;
+let centigradesTempMin3 = null;
+let centigradesTempMin4 = null;
+let centigradesTempMax = null;
+let centigradesTempMax1 = null;
+let centigradesTempMax2 = null;
+let centigradesTempMax3 = null;
+let centigradesTempMax4 = null;
 let iconElement = null;
 let descriptionElement = null;
 let centigradesTempeture = null;

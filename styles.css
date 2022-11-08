@@ -378,7 +378,7 @@ main {
     font-size: 1.6rem;
     text-align: center;
 }
-.forescast-container {
+.forecast-container {
     display: flex;
     width: 90%;
     justify-content: center;
@@ -389,13 +389,13 @@ main {
     text-align: center;
     background-color: rgba(220, 220, 220, 0.5);
 }
-.forescast-img img{
+.forecast-img img{
     display: block;
     width: 50px;
     height: 50px;
     margin: 12px auto;
 }
-.forescast-temperature span:nth-child(2) {
+.forecast-temperature span:nth-child(2) {
     color: #838080;
 }
 /* footer section */
