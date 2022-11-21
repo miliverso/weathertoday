@@ -148,6 +148,11 @@ nav ul a:hover {
     border-bottom: 1px solid #f7d307;
     cursor: pointer;
 }
+.day-anchor {
+    color: #f7d307;
+    cursor: default;
+    pointer-events: none;
+}
 /* main section */
 main {
     display: flex;
@@ -212,29 +217,31 @@ main {
 /* shower rain animation*/
 .shower-rain {
     background-color: rgba(212, 212, 212, 0.3);
-    background-image: url("https://i.postimg.cc/7hhM6v8R/rain-animation-mobile.png");
+    background-image: url("https://i.postimg.cc/hPgM25G7/rain-animation1.png"), url("https://i.postimg.cc/3wHwGm17/rain-animation2.png"), url("https://i.postimg.cc/pTLRQZFN/rain-animation3.png");
     animation: shower-rain 0.3s linear infinite;
 }
 .thunderstorm {
     background-color: rgba(212, 212, 212, 0.3);
-    background-image: url('https://i.postimg.cc/7hhM6v8R/rain-animation-mobile.png');
+    background-image: url("https://i.postimg.cc/hPgM25G7/rain-animation1.png"), url("https://i.postimg.cc/3wHwGm17/rain-animation2.png"), url("https://i.postimg.cc/pTLRQZFN/rain-animation3.png");
     animation: shower-rain 0.3s linear infinite;
 }
 /* thunderstorm animation*/
 @keyframes shower-rain{
-    from{
-        background-position: 0% 0%;
+    0%{
+        background-position: 0% 0%, 0% 0%, 0% 0%;
     }
-    to{
-        background-position: -10% -80%;
+    100% {
+         background-position: -100% -100%, 10% 100%, -10% -100%;
     }
 }
 .thunderstorm::before {
     content: "";
     position: absolute;
+    top: 0;
     width: 100%;
     height: 100%;
     background-image: url("https://i.postimg.cc/sDfbY1sF/lightning.png");
+    background-repeat: no-repeat;
     animation: lightning 4s linear infinite;
     opacity: 1;
 }
@@ -321,8 +328,8 @@ main {
     width: 100%; 
 }
 .main-weather-container div img {
-    width: 130px;
-    height: 130px;
+    width: 100px;
+    height: 100px;
 }
 .main-title {
     margin-bottom: 8px;
@@ -380,23 +387,84 @@ main {
 }
 .forecast-container {
     display: flex;
-    width: 90%;
+    flex-wrap: wrap;
+    width: 95%;
     justify-content: center;
-    gap: 20px;
-    margin: 20px auto 0;
-    padding: 8px 8px;
-    font-size: 1.6rem;
+    margin: 20px auto;
+    padding: 4px 4px;
+    font-size: 1.4rem;
     text-align: center;
+    line-height: 2;
     background-color: rgba(220, 220, 220, 0.5);
 }
 .forecast-img img{
     display: block;
-    width: 50px;
-    height: 50px;
-    margin: 12px auto;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
 }
 .forecast-temperature span:nth-child(2) {
     color: #838080;
+}
+.forecast-container > div {
+    margin-right: 16px;
+}
+.forecast-container > div:nth-child(5) {
+    margin-right: 0;
+}
+.forecast-container .hourly-forecast {
+    margin-right: 0;
+}
+.hourly-forecast-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+}
+.hourly-forecast {
+    display: flex;
+    align-items: center;
+}
+.hourly-forecast .hourly-forecast-time {
+    margin-right: 15px;
+}
+.hourly-forecast .hourly-forecast-img img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+}
+
+.hourly-forecast .hourly-forecast-temperature {
+    margin-right: 20px;
+    color: #3f3c3c;
+}
+.hourly-forecast .hourly-forecast-humidity {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+.humidity-span {
+    width: 10px;
+    height: 10px;
+    margin-right: 2px;
+    background-image: url("https://i.postimg.cc/cJB1WnJn/drop.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.hourly-forecast .hourly-forecast-wind {
+    display: flex;
+    align-items: center;
+}
+.wind-span {
+    width: 15px;
+    height: 15px;
+    margin-right: 2px;
+    background-image: url("https://i.postimg.cc/8cSCMgzq/wind.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 /* footer section */
  footer {
@@ -422,59 +490,45 @@ main {
     color: #13406A;
     text-decoration: none;
  }
- @media (min-width: 432px) and (min-height: 200px) {
-    body {
-        display: grid;
-        grid-template-columns: 1fr minmax(320px, 432px) 1fr;
-        align-items: center;
-        height: 100vh;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
+ .footer-credits a:hover {
+    text-decoration: underline;
+ }
+  @media (min-width: 400px) {
+    .main-weather-container div img {
+        width: 130px;
+        height: 130px;
     }
-    /* desktop backgrounds start*/
-    .background-day{
-        background-image: url('https://i.postimg.cc/W1VXQ3tX/desktoplandscapeimg.png');
+    .forecast-container {
+        font-size: 1.5rem;
     }
-    .background-day-rain {
-       background-image: url('https://i.postimg.cc/ZqstLg4P/desktoplandscaperainimg.png'); 
+    .forecast-img img{
+        width: 50px;
+        height: 50px;
     }
-    .background-day-snow {
-        background-image: url('https://i.postimg.cc/tRzZKn5G/desktoplandscapesnowimg.png');
+    .hourly-forecast .hourly-forecast-time {
+        margin-right: 25px;
     }
-    .background-night{
-        background-image: url('https://i.postimg.cc/W1VXQ3tX/desktoplandscapeimg.png');
+    .hourly-forecast .hourly-forecast-img img {
+        width: 50px;
+        height: 50px;
+        margin-right: 25px;
     }
-    .background-night-rain {
-        background-image: url('https://i.postimg.cc/ZqstLg4P/desktoplandscaperainimg.png');
+    .hourly-forecast .hourly-forecast-temperature {
+        margin-right: 30px;
     }
-    .background-night-snow {
-        background-image: url('https://i.postimg.cc/tRzZKn5G/desktoplandscapesnowimg.png');
+    .hourly-forecast .hourly-forecast-humidity {
+        margin-right: 30px;
     }
-     /* desktop backgrounds ends*/
-
-    .body-left, .body-right {
-        width: 100%;
-        height: 100vh;
-        background-color: rgba(254, 254, 254, 0.5);
-        backdrop-filter: blur(2px);
+    .humidity-span {
+        margin-right: 4px;
     }
-    /* mobile backgrounds off*/
-    .mobile-background-d,
-    .mobile-background-n,
-    .mobile-background-d-rain, 
-    .mobile-background-n-rain, 
-    .mobile-background-d-snow,
-    .mobile-background-n-snow
-    {
-        background-image: none;
-    }
-    .main-temperture-container p span:nth-child(1) {
-        font-size: 7rem;
+    .wind-span {
+        margin-right: 4px;
+ 
     }
  }
- @media (min-height: 640px) {
-     #main-weather-animation {
+@media (min-height: 680px) {
+    #main-weather-animation {
         overflow: hidden;
     }
  }
