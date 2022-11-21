@@ -85,7 +85,7 @@ function searchCityHourly() {
    let city = document.querySelector(".main-title").textContent;
 
    let apiKey = "7b7fc85c1170821871baaac95758bc58";
-   let apiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
+   let apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
 
    axios.get(apiUrl).then(showCoordinates);
  }
@@ -164,7 +164,7 @@ function searchCityYesterday() {
   let city = document.querySelector(".main-title").textContent;
 
   let apiKey = "7b7fc85c1170821871baaac95758bc58";
-  let apiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
+  let apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
 
   axios.get(apiUrl).then(showCityCoordinates);
 }
@@ -250,7 +250,6 @@ function showTemperatureToday(response) {
   hourlyAnchor.classList.remove("day-anchor");
   forecastContainer.classList.remove("hourly-forecast-container");
   centigradesTempeture = Math.round(response.data.main.temp);
-  console.log(response.data.dt)
 
   document.querySelector("#temperatureValue").innerHTML = centigradesTempeture;
   document.querySelector("#weather-description").innerHTML = response.data.weather[0].description;
