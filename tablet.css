@@ -8,6 +8,12 @@
         background-position: center;
         background-size: cover;
     }
+    .body-left, .body-right {
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(254, 254, 254, 0.5);
+        backdrop-filter: blur(2px);
+    }
     /* desktop backgrounds start*/
     .background-day{
         background-image: url('https://i.postimg.cc/W1VXQ3tX/desktoplandscapeimg.png');
@@ -29,12 +35,6 @@
     }
      /* desktop backgrounds ends*/
 
-    .body-left, .body-right {
-        width: 100%;
-        height: 100vh;
-        background-color: rgba(254, 254, 254, 0.5);
-        backdrop-filter: blur(2px);
-    }
     /* mobile backgrounds off*/
     .mobile-background-d,
     .mobile-background-n,

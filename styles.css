@@ -197,8 +197,31 @@ main {
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
-    overflow: scroll;
+    overflow-y: auto;
+    /* Firefox */
+    scrollbar-color: rgba(220, 220, 220, 10) transparent;
+    scrollbar-width: thin;
+    /* Firefox */
 }
+#main-weather-animation:hover {
+    scrollbar-color: rgb(210,210,210) transparent;
+}
+/* Chrome, Safari, newer versions of Opera, almost all iOS browsers (including Firefox for iOS */
+::-webkit-scrollbar {
+    width: 10px;
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    border: 3px solid transparent;
+    background-color: rgba(220, 220, 220, 10);
+    background-clip: content-box;
+    border-radius: 12px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color:  rgb(210,210,210);
+}
+/* Chrome, Safari, newer versions of Opera, almost all iOS browsers (including Firefox for iOS */
+
 /* light rain animation*/
 .light-rain {
     background-color: rgba(212, 212, 212, 0.3);
@@ -529,6 +552,6 @@ main {
  }
 @media (min-height: 680px) {
     #main-weather-animation {
-        overflow: hidden;
+        overflow-y: hidden;
     }
  }
