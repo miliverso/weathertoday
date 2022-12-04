@@ -447,7 +447,7 @@ function showIcon(iconInfo) {
     case "01n":
       icon.setAttribute(
         "src",
-        "https://media.giphy.com/media/5voKSah9SNQSoi8ATt/giphy.gif"
+        "https://media.giphy.com/media/5BaA7rwHEYOgeziNGJ/giphy.gif"
       );
       icon.setAttribute("alt", iconInfo.description);
       break;
@@ -455,7 +455,7 @@ function showIcon(iconInfo) {
     case "02n":
       icon.setAttribute(
         "src",
-        "https://media.giphy.com/media/v2O5pMeohuPtOYJ36Z/giphy.gif"
+        "https://media.giphy.com/media/2blvVuEhZf5rcElait/giphy.gif"
       );
       icon.setAttribute("alt", iconInfo.description);
       break;
@@ -463,7 +463,7 @@ function showIcon(iconInfo) {
     case "03n":
       icon.setAttribute(
         "src",
-        "https://media.giphy.com/media/DIT8x5i77MOtJEBR1j/giphy.gif"
+        "https://media.giphy.com/media/YiQmhnIuznLgkWWym8/giphy.gif"
       );
       icon.setAttribute("alt", iconInfo.description);
       break;
@@ -471,7 +471,7 @@ function showIcon(iconInfo) {
     case "04n":
       icon.setAttribute(
         "src",
-        "https://media.giphy.com/media/vyMjCPX81vt4389w2c/giphy.gif"
+        "https://media.giphy.com/media/JYrgtPM5KlnnVFGC2c/giphy.gif"
       );
       icon.setAttribute("alt", iconInfo.description);
       break;
@@ -479,7 +479,7 @@ function showIcon(iconInfo) {
     case "09n":
       icon.setAttribute(
         "src",
-        "https://media.giphy.com/media/2evfKjqO4tUZee7Icb/giphy.gif"
+        "https://media.giphy.com/media/zl5p8SiO1e0X4uB89z/giphy.gif"
       );
       icon.setAttribute("alt", iconInfo.description);
       break;
@@ -487,7 +487,7 @@ function showIcon(iconInfo) {
     case "10n":
       icon.setAttribute(
         "src",
-        "https://media.giphy.com/media/m8i73on3nuIt2Tz6B7/giphy.gif"
+        "https://media.giphy.com/media/Y2C9a9qeVZwTUBDFok/giphy.gif"
       );
       icon.setAttribute("alt", iconInfo.description);
       break;
@@ -495,7 +495,7 @@ function showIcon(iconInfo) {
     case "11n":
       icon.setAttribute(
         "src",
-        "https://media.giphy.com/media/w37vXgNYAeXdiMFnm3/giphy.gif"
+        "https://media.giphy.com/media/WNEl7Z2TAsKDNNiIpT/giphy.gif"
       );
       icon.setAttribute("alt", iconInfo.description);
       break;
@@ -511,7 +511,7 @@ function showIcon(iconInfo) {
     case "50n":
       icon.setAttribute(
         "src",
-        "https://media.giphy.com/media/f9AN1R6YelF3HGB9JD/giphy.gif"
+        "https://media.giphy.com/media/O9353upjA6U7mZcLe7/giphy.gif"
       );
       icon.setAttribute("alt", iconInfo.description);
       break;
@@ -525,80 +525,123 @@ function showIcon(iconInfo) {
 }
 function displayForecastIcon(iconInformation) {
   let icon = iconInformation.icon;
+  console.log(icon)
   let description = iconInformation.description;
+  let dayClassNames = ["background-day", "background-day-rain", "background-day-snow", "mobile-background-d", "mobile-background-d-rain", "mobile-background-d-snow"];
+  let isTheDayBackgroundInDesktop = dayClassNames.some((dayClassName) => dayClassName === desktopBackground.classList.value);
+  let isTheDayBackgroundInMobile = dayClassNames.some((dayClassName) => dayClassName === mobileBackground.classList.value);
+  let nightClassNames = ["background-night", "background-night-rain", "background-night-snow", "mobile-background-n", "mobile-background-n-rain", "mobile-background-n-snow"];
+  let isTheNightbackgroundInDesktop = nightClassNames.some((dayClassName) => dayClassName === desktopBackground.classList.value);
+  let isTheNightbackgroundInMobile = nightClassNames.some((dayClassName) => dayClassName === mobileBackground.classList.value);
 
-  switch (icon) {
-    case "01d":
-      return `<img src="https://i.postimg.cc/3JQVLTQd/sun.png" alt="${description}"></img>`;
-      break;
-
-    case "02d":
-      return `<img src="https://i.postimg.cc/mDv7cKdH/few-clouds.png" alt="${description}"></img>`;
-      break;
-
-    case "03d":
-      return `<img src="https://i.postimg.cc/T1qNRwpH/scattered-clouds.png" alt="${description}"></img>`;
-      break;
-
-    case "04d":
-      return `<img src="https://i.postimg.cc/FRJXSRgH/broken-clouds.png" alt="${description}"></img>`;
-      break;
-
-    case "09d":
-      return `<img src="https://i.postimg.cc/dQHvZGmB/shower-rain.png" alt="${description}"></img>`;
-      break;
-
-    case "10d":
-      return `<img src="https://i.postimg.cc/WbncMgvz/rain.png" alt="${description}"></img>`;
-      break;
-
-    case "11d":
-      return `<img src="https://i.postimg.cc/ZqTxzSNV/thunderstorm.png" alt="${description}"></img>`;
-      break;
-
-    case "13d":
-      return `<img src="https://i.postimg.cc/prGG9SJD/snow.png" alt="${description}"></img>`;
-      break;
-
-    case "50d":
-      return `<img src="https://i.postimg.cc/cLJwHHvt/mist.png" alt="${description}"></img>`;
-      break;
-
-    case "01n":
-      return `<img src="https://i.postimg.cc/3JQVLTQd/sun.png" alt="${description}"></img>`;
-      break;
-
-    case "02n":
-      return `<img src="https://i.postimg.cc/mDv7cKdH/few-clouds.png" alt="${description}"></img>`;
-      break;
-
-    case "03n":
-      return `<img src="https://i.postimg.cc/T1qNRwpH/scattered-clouds.png" alt="${description}"></img>`;
-      break;
-
-    case "04n":
-      return `<img src="https://i.postimg.cc/FRJXSRgH/broken-clouds.png" alt="${description}"></img>`;
-      break;
-
-    case "09n":
-      return `<img src="https://i.postimg.cc/dQHvZGmB/shower-rain.png" alt="${description}"></img>`;
-      break;
-
-    case "10n":
-      return `<img src="https://i.postimg.cc/WbncMgvz/rain.png" alt="${description}"></img>`;
-      break;
-
-    case "11n":
-      return `<img src="https://i.postimg.cc/ZqTxzSNV/thunderstorm.png" alt="${description}"></img>`;
-      break;
-
-    case "13n":
-      return `<img src="https://i.postimg.cc/prGG9SJD/snow.png" alt="${description}"></img>`;
-      break;
-
-    case "50n":
-      return `<img src="https://i.postimg.cc/cLJwHHvt/mist.png" alt="${description}"></img>`;
-      break;
+  if (
+    isTheDayBackgroundInDesktop &&
+    isTheDayBackgroundInMobile &&
+    icon.startsWith("01")
+  ) {
+    return `<img src="https://i.postimg.cc/3JQVLTQd/sun.png" alt="${description}"></img>`;
+  } else if (
+    isTheDayBackgroundInDesktop &&
+    isTheDayBackgroundInMobile &&
+    icon.startsWith("02")
+  ) {
+    return `<img src="https://i.postimg.cc/mDv7cKdH/few-clouds.png" alt="${description}"></img>`;
+  } else if (
+    isTheDayBackgroundInDesktop &&
+    isTheDayBackgroundInMobile &&
+    icon.startsWith("03")
+  ) {
+    return `<img src="https://i.postimg.cc/T1qNRwpH/scattered-clouds.png" alt="${description}"></img>`;
+  } else if (
+    isTheDayBackgroundInDesktop &&
+    isTheDayBackgroundInMobile &&
+    icon.startsWith("04")
+  ) {
+    return `<img src="https://i.postimg.cc/FRJXSRgH/broken-clouds.png" alt="${description}"></img>`;
+  } else if (
+    isTheDayBackgroundInDesktop &&
+    isTheDayBackgroundInMobile &&
+    icon.startsWith("09")
+  ) {
+    return `<img src="https://i.postimg.cc/dQHvZGmB/shower-rain.png" alt="${description}"></img>`;
+  } else if (
+    isTheDayBackgroundInDesktop &&
+    isTheDayBackgroundInMobile &&
+    icon.startsWith("10")
+  ) {
+    return `<img src="https://i.postimg.cc/WbncMgvz/rain.png" alt="${description}"></img>`;
+  } else if (
+    isTheDayBackgroundInDesktop &&
+    isTheDayBackgroundInMobile &&
+    icon.startsWith("11")
+  ) {
+    return `<img src="https://i.postimg.cc/ZqTxzSNV/thunderstorm.png" alt="${description}"></img>`;
+  } else if (
+    isTheDayBackgroundInDesktop &&
+    isTheDayBackgroundInMobile &&
+    icon.startsWith("13")
+  ) {
+    return `<img src="https://i.postimg.cc/prGG9SJD/snow.png" alt="${description}"></img>`;
+  } else if (
+    isTheDayBackgroundInDesktop &&
+    isTheDayBackgroundInMobile &&
+    icon.startsWith("50")
+  ) {
+    return `<img src="https://i.postimg.cc/cLJwHHvt/mist.png" alt="${description}"></img>`;
+  } else if (
+    isTheNightbackgroundInDesktop &&
+    isTheNightbackgroundInMobile &&
+    icon.startsWith("01")
+  ) {
+    return `<img src="https://i.postimg.cc/gcLPrjfm/forecast-moon.png" alt="${description}"></img>`;
+  } else if (
+    isTheNightbackgroundInDesktop &&
+    isTheNightbackgroundInMobile &&
+    icon.startsWith("02")
+  ) {
+    return `<img src="https://i.postimg.cc/sXw8NdQj/forecast-night-few-clouds.png" alt="${description}"></img>`;
+  } else if (
+    isTheNightbackgroundInDesktop &&
+    isTheNightbackgroundInMobile &&
+    icon.startsWith("03")
+  ) {
+    return `<img src="https://i.postimg.cc/7YNtLyYq/forecast-night-broken-clouds.png" alt="${description}"></img>`;
+  } else if (
+    isTheNightbackgroundInDesktop &&
+    isTheNightbackgroundInMobile &&
+    icon.startsWith("04")
+  ) {
+    return `<img src="https://i.postimg.cc/7YNtLyYq/forecast-night-broken-clouds.png" alt="${description}"></img>`;
+  } else if (
+    isTheNightbackgroundInDesktop &&
+    isTheNightbackgroundInMobile &&
+    icon.startsWith("09")
+  ) {
+    return `<img src="https://i.postimg.cc/bJZ9dhFB/forecast-night-shower-rain.png" alt="${description}"></img>`;
+  } else if (
+    isTheNightbackgroundInDesktop &&
+    isTheNightbackgroundInMobile &&
+    icon.startsWith("10")
+  ) {
+    return `<img src="https://i.postimg.cc/kXq0jZrV/forecast-night-rain.png" alt="${description}"></img>`;
+  } else if (
+    isTheNightbackgroundInDesktop &&
+    isTheNightbackgroundInMobile &&
+    icon.startsWith("11")
+  ) {
+    return `<img src="https://i.postimg.cc/3rp7wWvm/forecast-night-thunderstorm.png" alt="${description}"></img>`;
+  } else if (
+    isTheNightbackgroundInDesktop &&
+    isTheNightbackgroundInMobile &&
+    icon.startsWith("13")
+  ) {
+    return `<img src="https://i.postimg.cc/prGG9SJD/snow.png" alt="${description}"></img>`;
+  } else if (
+    isTheNightbackgroundInDesktop &&
+    isTheNightbackgroundInMobile &&
+    icon.startsWith("50")
+  ) {
+    return `<img src="https://i.postimg.cc/qRSYTcLS/forecast-night-mist.png" alt="${description}"></img>`;
   }
 }
 
@@ -656,6 +699,10 @@ function screenWidth(iconElement) {
 
 function backgroundDAndN(iconElement) {
   if (iconElement.endsWith("d")) {
+    document.querySelector(".body-left").classList.remove("body-left-night");
+    document.querySelector(".body-right").classList.remove("body-right-night");
+    document.querySelector("#weather").classList.remove("main-weather-font-at-night");
+    document.querySelector("#temp-convertion").classList.remove("span-temp-convertion");
     desktopBackground.classList.add("background-day");
     desktopBackground.classList.remove(
       "background-night",
@@ -665,6 +712,10 @@ function backgroundDAndN(iconElement) {
       "background-night-snow"
     );
   } else if (iconElement.endsWith("n")) {
+    document.querySelector(".body-left").classList.add("body-left-night");
+    document.querySelector(".body-right").classList.add("body-right-night");
+    document.querySelector("#weather").classList.add("main-weather-font-at-night");
+    document.querySelector("#temp-convertion").classList.add("span-temp-convertion");
     desktopBackground.classList.add("background-night");
     desktopBackground.classList.remove(
       "background-day",
@@ -726,6 +777,8 @@ function backgroundPrecipitations(iconElement) {
 }
 function mobileBackgroundDAndN(iconElement) {
     if (iconElement.endsWith("d")) {
+      document.querySelector("#weather").classList.remove("main-weather-font-at-night");
+      document.querySelector("#temp-convertion").classList.remove("span-temp-convertion");
       mobileBackground.classList.add("mobile-background-d");
       mobileBackground.classList.remove(
         "mobile-background-n",
@@ -736,6 +789,8 @@ function mobileBackgroundDAndN(iconElement) {
       );
     }
     else if (iconElement.endsWith("n")) {
+      document.querySelector("#weather").classList.add("main-weather-font-at-night");
+      document.querySelector("#temp-convertion").classList.add("span-temp-convertion");
       mobileBackground.classList.add("mobile-background-n");
       mobileBackground.classList.remove(
         "mobile-background-d",

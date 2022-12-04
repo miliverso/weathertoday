@@ -99,7 +99,7 @@ header {
     width: 20px;
     height: 20px;
     margin-left: 12px;
-    background-image: url('https://i.postimg.cc/B6GrN317/search-icon.png');
+    background-image: url("https://i.postimg.cc/B6GrN317/search-icon.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -172,25 +172,27 @@ main {
 }
 /* mobile backgrounds start*/
 .mobile-background-d {
-    background-image: url('https://i.postimg.cc/qq1JSdh1/mobilelandscapeimg.png');
+    background-image: url("https://i.postimg.cc/jdTvQHLg/mobile-background-d.png");
 }
 .mobile-background-n {
-    background-image: url('https://i.postimg.cc/qq1JSdh1/mobilelandscapeimg.png');
+    background-image: url("https://i.postimg.cc/7hn3QRfB/mobile-background-n.png");
 }
 .mobile-background-d-rain {
-    background-image: url('https://i.postimg.cc/zBm4zPY8/mobilelandscaperainimg.png');
+    background-image: url("https://i.postimg.cc/W4xwDrB7/mobile-background-d-rain.png");
 }
 .mobile-background-n-rain {
-    background-image: url('https://i.postimg.cc/zBm4zPY8/mobilelandscaperainimg.png');
+    background-image: url("https://i.postimg.cc/xT9yb94B/mobile-background-n-rain.png");
 }
 .mobile-background-d-snow {
-    background-image: url('https://i.postimg.cc/PqM1JPBJ/mobilelandscapesnowimg.png');
+    background-image: url("https://i.postimg.cc/PJjbyHrp/mobile-background-d-snow.png");
 }
 .mobile-background-n-snow {
-    background-image: url('https://i.postimg.cc/PqM1JPBJ/mobilelandscapesnowimg.png');
+    background-image: url("https://i.postimg.cc/9QMdJJVp/mobile-background-n-snow.png");
 }
 /* mobile backgrounds ends*/
-
+#main-weather-animation .main-weather-font-at-night {
+    color: #d0e0f1;
+}
 /* animations start*/
 #main-weather-animation {
     width: 100%;
@@ -224,8 +226,8 @@ main {
 
 /* light rain animation*/
 .light-rain {
-    background-color: rgba(212, 212, 212, 0.3);
-    background-image: url("https://i.postimg.cc/X7Zk60gG/rain-animation-mobile2.png");
+    background-color: rgba(212, 212, 212, 0.2);
+    background-image: url("https://i.postimg.cc/sxzN3Qsh/rain-animation.png");
     animation: light-rain 0.3s linear infinite;
 }
 
@@ -234,27 +236,27 @@ main {
         background-position: 0% 0%;
     }
     to{
-            background-position: -10% -100%;
+        background-position: -10% -100%;
     }
 }
 /* shower rain animation*/
 .shower-rain {
     background-color: rgba(212, 212, 212, 0.3);
-    background-image: url("https://i.postimg.cc/hPgM25G7/rain-animation1.png"), url("https://i.postimg.cc/3wHwGm17/rain-animation2.png"), url("https://i.postimg.cc/pTLRQZFN/rain-animation3.png");
+    background-image: url("https://i.postimg.cc/Z5XNyP9R/rain-animation.png"), url("https://i.postimg.cc/c4bhXngq/rain-animation2.png");
     animation: shower-rain 0.3s linear infinite;
 }
 .thunderstorm {
     background-color: rgba(212, 212, 212, 0.3);
-    background-image: url("https://i.postimg.cc/hPgM25G7/rain-animation1.png"), url("https://i.postimg.cc/3wHwGm17/rain-animation2.png"), url("https://i.postimg.cc/pTLRQZFN/rain-animation3.png");
+    background-image: url("https://i.postimg.cc/Z5XNyP9R/rain-animation.png"), url("https://i.postimg.cc/c4bhXngq/rain-animation2.png");
     animation: shower-rain 0.3s linear infinite;
 }
 /* thunderstorm animation*/
 @keyframes shower-rain{
     0%{
-        background-position: 0% 0%, 0% 0%, 0% 0%;
+        background-position: 0% 50%, 10% 100%;
     }
     100% {
-         background-position: -100% -100%, 10% 100%, -10% -100%;
+         background-position: -10% -100%, -10% -100%;
     }
 }
 .thunderstorm::before {
@@ -311,6 +313,7 @@ main {
 }
 /* mist animation*/
 .mist {
+    background-color: rgba(212, 212, 212, 0.3);
     background-image: url("https://i.postimg.cc/pLf8PV5T/mist.png");
     animation: mist 50s linear infinite;
 }
@@ -335,7 +338,7 @@ main {
     width: 25px;
     height: 20px;
     font-size: 2rem;
-    background-image: url('https://i.postimg.cc/Kj3HtvZH/location-point.png');
+    background-image: url("https://i.postimg.cc/Kj3HtvZH/location-point.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -367,6 +370,9 @@ main {
     color: #9a9393;
     text-decoration: none;
 }
+.main-temperture-container p .span-temp-convertion a {
+    color: #768ca6;
+}
 .main-temperture-container p span a:hover {
      text-underline-position: under;
      text-decoration: underline;
@@ -376,6 +382,10 @@ main {
     cursor: default;
     text-decoration: none;
 }
+.main-temperture-container p .span-temp-convertion .active {
+    color: #d0e0f1;
+}
+
 .main-temperture-container p span .active:hover {
    text-decoration: none;
 }
@@ -427,7 +437,7 @@ main {
     margin: 0 auto;
 }
 .forecast-temperature span:nth-child(2) {
-    color: #838080;
+    color: rgba(63, 60, 60, 0.6);
 }
 .forecast-container > div {
     margin-right: 16px;

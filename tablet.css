@@ -14,24 +14,27 @@
         background-color: rgba(254, 254, 254, 0.5);
         backdrop-filter: blur(2px);
     }
+    .body-left-night, .body-right-night {
+        background-color: rgba(254, 254, 254, 0.3);
+    }
     /* desktop backgrounds start*/
     .background-day{
-        background-image: url('https://i.postimg.cc/W1VXQ3tX/desktoplandscapeimg.png');
+        background-image: url("https://i.postimg.cc/jq4yTGSc/background-day.png");
     }
     .background-day-rain {
-       background-image: url('https://i.postimg.cc/ZqstLg4P/desktoplandscaperainimg.png'); 
+       background-image: url("https://i.postimg.cc/QNmKw1fn/background-day-rain.png"); 
     }
     .background-day-snow {
-        background-image: url('https://i.postimg.cc/tRzZKn5G/desktoplandscapesnowimg.png');
+        background-image: url("https://i.postimg.cc/CKbzNqZ7/background-day-snow.png");
     }
     .background-night{
-        background-image: url('https://i.postimg.cc/W1VXQ3tX/desktoplandscapeimg.png');
+        background-image: url("https://i.postimg.cc/hjndmrGc/background-night.png");
     }
     .background-night-rain {
-        background-image: url('https://i.postimg.cc/ZqstLg4P/desktoplandscaperainimg.png');
+        background-image: url("https://i.postimg.cc/hvPQytxY/background-night-rain.png");
     }
     .background-night-snow {
-        background-image: url('https://i.postimg.cc/tRzZKn5G/desktoplandscapesnowimg.png');
+        background-image: url("https://i.postimg.cc/50ZNv9gv/background-night-snow.png");
     }
      /* desktop backgrounds ends*/
 
